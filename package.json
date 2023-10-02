@@ -1,0 +1,27 @@
+{
+  "name": "cubmic.components",
+  "version": "0.5.0",
+  "description": "WebComponents in cubmic design",
+  "type": "module",
+  "main": "index.js",
+  "author": "mail@cubmic.ch",
+  "license": "MIT",
+  "dependencies": {
+    "lit": "^2.8.0",
+    "material-icons": "^1.13.12"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.4.5",
+    "@storybook/addon-links": "^7.4.5",
+    "@storybook/blocks": "^7.4.5",
+    "@storybook/web-components": "^7.4.5",
+    "@storybook/web-components-vite": "^7.4.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.4.5"
+  },
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  }
+}
