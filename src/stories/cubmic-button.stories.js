@@ -13,12 +13,14 @@ export default {
 function Template({
   label,
   color,
-  disabled
+  disabled,
+  round
 }) {
   return html`
     <cubmic-button
       color=${color}
       ?disabled=${disabled}
+      ?round=${round}
     >
       ${label}
       <cubmic-icon name="close"></cubmic-icon>
@@ -35,5 +37,6 @@ Button.argTypes = {
 Button.args = {
   label: 'Click mich...',
   color: COLORS_NAMES[0],
-  disabled: false
+  disabled: false,
+  round: false
 }

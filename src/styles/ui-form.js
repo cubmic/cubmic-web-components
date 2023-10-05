@@ -29,4 +29,7 @@ export const uiForm = css`
     outline-offset: 2px;
     outline: 2px solid #f00;
   }
+  :host *.round {
+    border-radius: 40px;
+  }
 `;

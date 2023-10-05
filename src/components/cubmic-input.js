@@ -13,8 +13,12 @@ export default class CubmicInput extends LitElement {
     // in only
     color: { type: String },
     name: { type: String },
-    tabindex: { type: Number },
     disabled: { type: Boolean }
+  }
+
+  static shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true
   }
 
   constructor() {
@@ -22,7 +26,6 @@ export default class CubmicInput extends LitElement {
     this.value = ''
     this.color = 'default'
     this.name = nothing
-    this.tabindex = nothing
     this.disabled = false
   }
 
@@ -33,7 +36,6 @@ export default class CubmicInput extends LitElement {
         style=${style}
         .value=${this.value}
         .name=${this.name}
-        .tabindex=${this.tabindex}
         ?disabled=${this.disabled}
       />
     `

@@ -40,6 +40,11 @@ function Template2({
   position3
 }) {
   return html`
+    <script>
+      function call(element) {
+        element.dragReset()
+      }
+    </script>
     <cubmic-container>
       <cubmic-dragger .position=${position1} .grid=${grid}>
         <cubmic-card style="background:#A86;">
@@ -60,7 +65,7 @@ function Template2({
             ${content}
           </cubmic-card-section>
           <cubmic-card-section>
-            <cubmic-dragger style="background:#900; border-radius:50%;" .position=${position3} />
+            <cubmic-dragger style="background:#900; border-radius:50%;" .position=${position3} onmouseup="call(this)" />
           </cubmic-card-section>
         </cubmic-card>
       </cubmic-dragger>

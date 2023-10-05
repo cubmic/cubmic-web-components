@@ -51,9 +51,23 @@ export default class CubmicDragger extends LitElement {
     return findParentBySelector(this, 'cubmic-container')
   }
 
-  firstUpdated () {
+  dragReset () {
+    this.style.transition = 'all 0.3s cubic-bezier(0.64, 0.57, 0.67, 1.53)'
+    this.position = { x: 0, y: 0 }
+    this.setPosition()
+    setTimeout(() => {
+      this.style.transition = undefined
+    }, 300)
+  }
+
+  setPosition () {
     this.style.left = this.position.x +'px'
     this.style.top = this.position.y +'px'
+  }
+
+
+  firstUpdated () {
+    this.setPosition()
 
     dragElement(this, this.container, this.grid, ({ pos, drag }) => {
       this.position = pos
