@@ -1,12 +1,47 @@
-import { LitElement, html, nothing } from 'lit'
+import { LitElement, html, css, nothing } from 'lit'
 import { styleMap } from 'lit/directives/style-map.js'
 import { classMap } from "lit/directives/class-map.js"
 import { COLORS } from '../enums.js'
-import { uiForm } from '../styles/ui-form.js'
   
 export default class CubmicButton extends LitElement {
 
-  static styles = [uiForm]
+  static styles = css`
+    button {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 20px;
+      height: 40px;
+      padding: 0 10px;
+      color: currentColor;
+      border: 2px solid currentColor;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: box-shadow 0.25s, padding-top 0.25s;
+    }
+    button:disabled {
+      cursor: not-allowed;
+    }
+    button:focus,
+    button:hover {
+      filter: brightness(110%) saturate(140%);
+    }
+    button:focus-visible {
+      outline-offset: 2px;
+      outline: 2px solid #f00;
+    }
+    button:active { 
+      box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.7);
+      padding-top: 5px;
+    } 
+    button.round {
+      border-radius: 20px;
+    }
+  `
 
   static properties = {
     // in only

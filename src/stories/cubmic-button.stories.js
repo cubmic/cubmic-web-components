@@ -23,7 +23,7 @@ function Template({
       ?round=${round}
     >
       ${label}
-      <cubmic-icon name="close"></cubmic-icon>
+      <cubmic-icon name="settings"></cubmic-icon>
     </cubmic-button>
   `
 }
@@ -35,8 +35,8 @@ Button.argTypes = {
   }
 }
 Button.args = {
-  label: 'Click mich...',
-  color: COLORS_NAMES[0],
+  label: 'Settings',
+  color: 'default',
   disabled: false,
-  round: false
+  round: true
 }

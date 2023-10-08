@@ -8,15 +8,20 @@ export default {
   component: "cubmic-card"
 }
 
-
-
 function Template({
   title,
   content,
-  color
+  background,
+  color,
+  round,
+  border
 }) {
   return html`
-    <cubmic-card style="background:${color};">
+    <cubmic-card
+      ?round=${round}
+      ?border=${border}
+      style="background:${background};color:${color};"
+    >
       <cubmic-card-section>
         ${title}
       </cubmic-card-section>
@@ -29,11 +34,9 @@ function Template({
 export const Card = Template.bind({})
 Card.args = {
   title: 'Titel',
-  content: 'Content'
-}
-export const CardWithColor = Template.bind({})
-CardWithColor.args = {
-  title: 'Titel',
   content: 'Content',
-  color: '#68A'
+  color: '#fff',
+  background: '#68A',
+  round: false,
+  border: false
 }

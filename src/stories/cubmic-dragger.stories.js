@@ -11,26 +11,7 @@ export default {
   component: "cubmic-dragger"
 }
 
-
-
 function Template({
-  position
-}) {
-  return html`
-    <cubmic-dragger
-      .position=${position}
-    >
-    </cubmic-dragger>
-  `
-}
-export const Dragger = Template.bind({})
-Dragger.args = {
-  position: { x: 300, y: 200 }
-}
-
-
-
-function Template2({
   grid,
   title,
   content,
@@ -49,7 +30,7 @@ function Template2({
       <cubmic-dragger .position=${position1} .grid=${grid}>
         <cubmic-card style="background:#A86;">
           <cubmic-card-section>
-            <cubmic-input .value=${title} />
+            <cubmic-input color="transparent" .value=${title} />
           </cubmic-card-section>
           <cubmic-card-section>
             ${content}
@@ -59,7 +40,7 @@ function Template2({
       <cubmic-dragger .position=${position2} .grid=${grid}>
         <cubmic-card style="background:${color};">
           <cubmic-card-section>
-            <cubmic-input .value=${title} />
+            <cubmic-input color="transparent" @mousedown .value=${title} />
           </cubmic-card-section>
           <cubmic-card-section>
             ${content}
@@ -72,8 +53,8 @@ function Template2({
     </cubmic-container>
   `
 }
-export const DraggerWithBounds = Template2.bind({})
-DraggerWithBounds.args = {
+export const Dragger = Template.bind({})
+Dragger.args = {
   grid: 20,
   title: 'Titel',
   content: 'Content',

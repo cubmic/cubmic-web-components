@@ -1,9 +1,10 @@
 const COLORS = {
-  default: { background: 'rgba(0,0,0,0.1)', color: '#000000' },
-  active: { background: '#3e679b', color: '#ffffff' },
-  disabled: { background: '#999999', color: '#ffffff' },
-  positive: { background: '#009900', color: '#ffffff' },
-  negative: { background: '#990000', color: '#ffffff' }
+  transparent: { background: 'rgba(0,0,0,0.1)', color: '#fff' },
+  default: { background: '#ccc', color: '#000' },
+  primary: { background: '#3e679b', color: '#fff' },
+  disabled: { background: '#999', color: '#fff' },
+  positive: { background: '#090', color: '#fff' },
+  negative: { background: '#900', color: '#fff' }
 }
 const COLORS_NAMES = Object.keys(COLORS)
 

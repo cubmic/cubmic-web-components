@@ -24,6 +24,10 @@ const dragElement = function(element, parent, grid = 0, callback) {
     e = e || window.event
     e.stopPropagation()
 
+    if (e.target !== element) {
+      return
+    }
+
     gap = {
       x: e.clientX - element.offsetLeft,
       y: e.clientY - element.offsetTop
