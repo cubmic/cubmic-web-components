@@ -1,4 +1,4 @@
-const dragElement = function(element, parent, grid = 0, callback) {
+const dragElement = function (element, parent, grid = 0, callback) {
   var pos = null, gap = null
   if (document.getElementById(element.id + "header")) {
     document.getElementById(element.id + "header").onmousedown = dragMouseDown
@@ -20,7 +20,7 @@ const dragElement = function(element, parent, grid = 0, callback) {
     }
   }
 
-  function dragMouseDown(e) {
+  function dragMouseDown (e) {
     e = e || window.event
     e.stopPropagation()
 
@@ -37,7 +37,7 @@ const dragElement = function(element, parent, grid = 0, callback) {
     document.onmousemove = elementDrag
   }
 
-  function elementDrag(e) {
+  function elementDrag (e) {
     e = e || window.event
     e.stopPropagation()
 
@@ -61,26 +61,26 @@ const dragElement = function(element, parent, grid = 0, callback) {
       }
     }
 
-    callback({ pos, drag: true })
+    callback({ element, pos, drag: true, drop: dropElement(parent, element) })
     element.style.top = pos.y + "px"
     element.style.left = pos.x + "px"
   }
 
-  function closeDragElement() {
-    callback({ pos, drag: false })
+  function closeDragElement () {
+    callback({ element, pos, drag: false, drop: dropElement(parent, element) })
 
     document.onmouseup = null
     document.onmousemove = null
   }
 }
 
-function collectionHas(a, b) {
+function collectionHas (a, b) {
   for(var i = 0, len = a.length; i < len; i ++) {
     if(a[i] == b) return true
   }
   return false
 }
-function findParentBySelector(elm, selector) {
+function findParentBySelector (elm, selector) {
   var all = document.querySelectorAll(selector)
   var cur = elm.parentNode
   while(cur && !collectionHas(all, cur)) {
@@ -89,9 +89,27 @@ function findParentBySelector(elm, selector) {
   return cur
 }
 
+function dropElement (parent, element) {
+  const droppers = [...parent.querySelectorAll('cubmic-dropper')].reverse()
+  for (const item of droppers) {
+    if (elementOverlapElement(element, item)) {
+      return item
+      break
+    }
+  }
+  return null
+}
+
+function elementOverlapElement (el1, el2) {
+  const r1 = el1.getBoundingClientRect()
+  const r2 = el2.getBoundingClientRect()
+  return Math.max(r1.left, r2.left) < Math.min(r1.right, r2.right) && Math.max(r1.top, r2.top) < Math.min(r1.bottom, r2.bottom)
+}
+
 export {
   dragElement,
-  findParentBySelector
+  findParentBySelector,
+  elementOverlapElement
 }
   
   

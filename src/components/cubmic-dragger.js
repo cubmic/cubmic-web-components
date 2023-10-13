@@ -13,6 +13,7 @@ export default class CubmicDragger extends LitElement {
       transition: box-shadow 0.5s;
       z-index: 0;
       color: #fff;
+      user-select: none;
       background: repeating-linear-gradient(
         -55deg,
         #222,
@@ -42,8 +43,9 @@ export default class CubmicDragger extends LitElement {
   constructor() {
     super()
 
-    this.drag = false
     this.position = { x: 0, y: 0 }
+
+    this.drag = false
     this.grid = 1
   }
 
@@ -61,17 +63,22 @@ export default class CubmicDragger extends LitElement {
   }
 
   setPosition () {
-    this.style.left = this.position.x +'px'
-    this.style.top = this.position.y +'px'
+    this.style.left = this.position.x + 'px'
+    this.style.top = this.position.y + 'px'
   }
 
 
   firstUpdated () {
     this.setPosition()
 
-    dragElement(this, this.container, this.grid, ({ pos, drag }) => {
+    dragElement(this, this.container, this.grid, ({ element, pos, drag, drop }) => {
       this.position = pos
       this.drag = drag
+      if (!drag && drop) {
+        this.dispatchEvent(new CustomEvent('drop', { 
+          detail: { drop }
+        }))
+      }
     })
   }
 
@@ -85,9 +92,7 @@ export default class CubmicDragger extends LitElement {
     }
 
     return html`
-      <div>
-        <slot></slot>
-      </div>
+      <slot></slot>
     `
   }
 
