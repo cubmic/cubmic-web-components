@@ -74,9 +74,9 @@ export default class CubmicDragger extends LitElement {
     dragElement(this, this.container, this.grid, ({ element, pos, drag, drop }) => {
       this.position = pos
       this.drag = drag
-      if (!drag && drop) {
+      if (!drag) {
         this.dispatchEvent(new CustomEvent('drop', { 
-          detail: { drop }
+          detail: { element, drop }
         }))
       }
     })
